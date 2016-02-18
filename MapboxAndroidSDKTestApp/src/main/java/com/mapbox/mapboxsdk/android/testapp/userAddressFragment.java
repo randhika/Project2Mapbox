@@ -76,7 +76,7 @@ package com.mapbox.mapboxsdk.android.testapp;
                         setOnTouchListener(this);
 
                         Fragment fragment;
-                        fragment = new ContactManagerFragment();
+                        fragment = new GPSFragment();
                         Bundle args = new Bundle();
                         args.putString("address",address);
                         fragment.setArguments(args);
@@ -122,8 +122,6 @@ package com.mapbox.mapboxsdk.android.testapp;
         Geocoder coder = new Geocoder(userAddressFragment.this.getActivity());
         List<Address> addresslist;
         LatLng p1 = null;
-        double p1Lat = 0;
-        double p1Long = 0;
 
         try {
             addresslist = coder.getFromLocationName(address, 5);
@@ -131,10 +129,10 @@ package com.mapbox.mapboxsdk.android.testapp;
                 return null;
             }
             Address location = addresslist.get(0);
-            p1Lat = location.getLatitude();
-            p1Long = location.getLongitude();
+            location.getLatitude();
+            location.getLongitude();
 
-            p1 = new LatLng(location.getLatitude(), location.getLongitude());
+            p1 = new LatLng(location.getLatitude(), location.getLongitude() );
 
         } catch (Exception ex) {
 
@@ -148,16 +146,17 @@ package com.mapbox.mapboxsdk.android.testapp;
         Home.setToolTip(new addressWindow(mapView));
 
 
+
         mapView.addMarker(Home);
-
-
-        String searchUrl = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + p1Long + "," + p1Lat + ".json?types=region&access_token=&lt;your%20access%20token&gt;";
         return view;
 
+
     }
+
+
+
     @Override
-    public void onResume()
-        {
+    public void onResume() {
         super.onResume();
 
 
