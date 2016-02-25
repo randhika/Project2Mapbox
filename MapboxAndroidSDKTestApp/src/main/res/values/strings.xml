@@ -25,6 +25,7 @@
     <string name="pathTestMap">PathOverlay</string>
     <string name="bingTestMap">Bing Test Map</string>
     <string name="draggableMarkersTestMap">Draggable Markers</string>
+    <string name="SendtoContact">Send to Contact</string>
     <string name="mapbox_id_street">mapbox.streets</string>
     <string name="mapbox_id_satellite">mapbox.satellite</string>
     <string name="mapbox_id_terrain">mapbox.outdoors</string>

@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 		testFragmentNames.add(Menu.NONE, i++, Menu.NONE, getString(R.string.clusteredMarkersTestMap));
 		testFragmentNames.add(Menu.NONE, i++, Menu.NONE, getString(R.string.mbTilesTestMap));
         testFragmentNames.add(Menu.NONE, i++, Menu.NONE, getString(R.string.draggableMarkersTestMap));
+		testFragmentNames.add(Menu.NONE, i++, Menu.NONE, getString(R.string.SendtoContact));
 		//testFragmentNames.add(Menu.NONE, i, Menu.NONE, getString(R.string.userAddressFragment));
 		// Set the drawer toggle as the DrawerListener
 		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -96,6 +97,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 		/*
 		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(str));
 		startActivity(browserIntent);*/
+
+	}
+
+
+	public void addToContact(View view) {  // #1: Action from clicking the Submit button, this launches UserAddressFragment
+
+		Intent intent = new Intent(Intent.ACTION_SEND);
+		String title = "Add to";
+		intent.setType("text/plain");
+
+		EditText edText1 = (EditText) findViewById(R.id.editText2);
+		String message = edText1.getText().toString();
+		intent.putExtra(Intent.EXTRA_TEXT, message);
+
+		startActivity(intent);
+
+
 
 	}
 
@@ -191,6 +209,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case 20:
                 fragment = new DraggableMarkersTestFragment();
                 break;
+			case 21:
+				fragment =new SendFragment();
+				break;
 			default:
 				fragment = new MainTestFragment();
 				break;

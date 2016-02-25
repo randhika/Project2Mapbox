@@ -78,7 +78,7 @@ package com.mapbox.mapboxsdk.android.testapp;
                         Fragment fragment;
                         fragment = new GPSFragment();
                         Bundle args = new Bundle();
-                        args.putString("address",address);
+                        args.putString("address", address);
                         fragment.setArguments(args);
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         fragmentManager.beginTransaction()
@@ -92,7 +92,38 @@ package com.mapbox.mapboxsdk.android.testapp;
                     // Return true as we're done processing this event
                     return true;
                 }
+
+
             });
+
+            setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                     {
+                        // Demonstrate custom onTouch()
+                        setOnLongClickListener(this);
+
+                        Fragment fragment;
+                        fragment = new SendFragment();
+                        Bundle args = new Bundle();
+                        args.putString("address", address);
+                        fragment.setArguments(args);
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.content_frame, fragment)
+                                .commit();
+
+                        // Still close the InfoWindow though
+                        close();
+                    }
+
+                    // Return true as we're done processing this event
+                    return true;
+                }
+
+
+            });
+
         }
 
         /**
@@ -139,6 +170,8 @@ package com.mapbox.mapboxsdk.android.testapp;
             ex.printStackTrace();
         }
         //This adds the markers and centers the map on its location
+
+
 
         mapView.setCenter(new LatLng(p1));
         Marker Home = new Marker(mapView, address + "  Navigate Here", "", new LatLng(p1));

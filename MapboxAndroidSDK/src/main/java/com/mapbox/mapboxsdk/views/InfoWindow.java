@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.overlay.Marker;
+import android.view.View.OnLongClickListener;
+import android.widget.Toast;
 
 
 /**
@@ -56,6 +58,7 @@ public class InfoWindow {
         });
     }
 
+
     public InfoWindow(View view, MapView mapView) {
         mMapView = mapView;
         mIsVisible = false;
@@ -75,6 +78,18 @@ public class InfoWindow {
                 return true;
             }
         });
+
+        setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+
+
+                return true;
+            }
+        });
+
+
     }
 
     /**
@@ -187,5 +202,8 @@ public class InfoWindow {
      */
     public void setOnTouchListener(View.OnTouchListener listener) {
         mView.setOnTouchListener(listener);
+    }
+    public void setOnLongClickListener (View.OnLongClickListener listener) {
+        mView.setOnLongClickListener(listener);
     }
 }
